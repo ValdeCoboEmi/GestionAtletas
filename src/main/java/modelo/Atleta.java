@@ -2,7 +2,7 @@ package modelo;
 
 import java.util.Arrays;
 
-public abstract class Atleta implements   Imprimible{
+public abstract class Atleta implements Imprimible{
     private String nombre;
     private int edad;
     private String deporte;
@@ -156,7 +156,6 @@ public abstract class Atleta implements   Imprimible{
     //VISUALIZACION DE POLIFORMISMO DE UNA INTERFACE
     @Override
     public void imprimir() {
-
         System.out.println("Nombre del atleta: " + this.nombre);
         System.out.println("Peso del atleta: " + this.peso);
         System.out.println("Altura del atleta: " + this.altura);
