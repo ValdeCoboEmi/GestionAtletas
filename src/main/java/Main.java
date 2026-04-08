@@ -1,3 +1,4 @@
+import catalogo.Deporte;
 import modelo.Boxeador;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -46,7 +47,8 @@ public class Main {
         int edad = leer.nextInt();
         leer.nextLine();
         System.out.print("Deporte (Boxeo): ");
-        String deporte = leer.nextLine();
+        String deporteStr = leer.nextLine().toUpperCase();
+        Deporte deporte = Deporte.valueOf(deporteStr);
         System.out.print("Peso (kg): ");
         float peso = leer.nextFloat();
         System.out.print("Altura (m): ");
@@ -113,5 +115,9 @@ public class Main {
 
             System.out.println("========================================");
         }
+    }
+
+    public static void registrarEntranador(){
+
     }
 }
