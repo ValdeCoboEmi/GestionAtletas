@@ -13,7 +13,7 @@ public class Main {
             System.out.println("\n--- SISTEMA DE GESTIÓN DE ATLETAS ---");
             System.out.println("1. Registrar nuevo atleta (con todos los datos)");
             System.out.println("2. Ver lista de atletas y sus promedios");
-            System.out.println("3. Ver reporte detallado (IMC + Rendimiento)");
+            System.out.println("3. Ver reporte detallado (IMC + Rendimiento + Boxeo)");
             System.out.println("4. Salir");
             System.out.print("Seleccione una opción: ");
             opcion = leer.nextInt();
@@ -38,7 +38,6 @@ public class Main {
         } while (opcion != 4);
     }
 
-    // Método para capturar todos los datos de la clase Atleta
     public static void registrarAtleta() {
         System.out.println("\n--- Nuevo Registro ---");
         System.out.print("Nombre completo: ");
@@ -46,20 +45,26 @@ public class Main {
         System.out.print("Edad: ");
         int edad = leer.nextInt();
         leer.nextLine();
-        System.out.print("Deporte: ");
+        System.out.print("Deporte (Boxeo): ");
         String deporte = leer.nextLine();
         System.out.print("Peso (kg): ");
         float peso = leer.nextFloat();
         System.out.print("Altura (m): ");
         float altura = leer.nextFloat();
 
-        // Creamos el objeto con el constructor
-        Boxeador nuevo = new Boxeador(nombre, edad, deporte, altura, peso);
+        // --- NUEVOS CAMPOS DE BOXEADOR ---
+        System.out.print("Fuerza de golpe (Ej. 1000): ");
+        int fuerza = leer.nextInt();
+        System.out.print("Total de luchas en su carrera: ");
+        int luchasTotales = leer.nextInt();
+        System.out.print("Luchas ganadas: ");
+        int luchasGanadas = leer.nextInt();
+        leer.nextLine(); // Limpiar el buffer de nuevo
 
-
+        Boxeador nuevo = new Boxeador(nombre, edad, deporte, altura, peso, fuerza, luchasTotales, luchasGanadas);
 
         // Para llenar las horas de entreno
-        System.out.println("Ingrese las horas de entrenamiento de la semana:");
+        System.out.println("\nIngrese las horas de entrenamiento de la semana:");
         String[] dias = {"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"};
         for (int i = 0; i < 7; i++) {
             System.out.print(dias[i] + ": ");
@@ -82,8 +87,8 @@ public class Main {
         }
         System.out.println("\n--- Lista de Atletas ---");
         for (Boxeador a : listaBoxeador) {
-            System.out.printf("Nombre: %-15s | Deporte: %-10s | Promedio: %.2f hrs\n",
-                    a.getNombre(), a.getDeporte(), a.calcularPromedioSemanal());
+            System.out.printf("Nombre: %-15s | Categoría: %-15s | Promedio: %.2f hrs\n",
+                    a.getNombre(), a.getCategoria(), a.calcularPromedioSemanal());
         }
     }
 
@@ -94,9 +99,18 @@ public class Main {
         }
         for (Boxeador a : listaBoxeador) {
             System.out.println("\n========================================");
+            // METODOS DE ATLETA
             a.imprimir();
             a.clasificarIMC();
             a.imprimirResumenEntreno();
+            System.out.println("----------------------------------------");
+
+            // --- METODOS DE BOXEADOR ---
+            a.mostrarEstadisticasBoxeo();
+            System.out.println();
+            a.entrenar();
+            a.lanzarGolpeFirma();
+
             System.out.println("========================================");
         }
     }
