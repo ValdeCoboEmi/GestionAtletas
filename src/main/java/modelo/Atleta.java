@@ -1,11 +1,12 @@
 package modelo;
 
+import catalogo.Deporte;
 import java.util.Arrays;
 
 public abstract class Atleta implements Imprimible{
     private String nombre;
     private int edad;
-    private String deporte;
+    private Deporte deporte;
     private float peso;
     private float altura;
     private float imc;
@@ -18,7 +19,7 @@ public abstract class Atleta implements Imprimible{
     }
 
     // Constructor con parámetros
-    public Atleta(String nombre, int edad, String deporte, float altura, float peso) {
+    public Atleta(String nombre, int edad, Deporte deporte, float altura, float peso) {
         this.nombre = nombre;
         this.edad = edad;
         this.deporte = deporte;
@@ -44,11 +45,11 @@ public abstract class Atleta implements Imprimible{
         this.edad = edad;
     }
 
-    public String getDeporte() {
+    public Deporte getDeporte() {
         return deporte;
     }
 
-    public void setDeporte(String deporte) {
+    public void setDeporte(Deporte deporte) {
         this.deporte = deporte;
     }
 

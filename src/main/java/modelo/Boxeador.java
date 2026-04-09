@@ -1,5 +1,7 @@
 package modelo;
 
+import catalogo.Deporte;
+
 public class Boxeador extends Atleta {
 
     private String categoria;
@@ -10,7 +12,7 @@ public class Boxeador extends Atleta {
     public Boxeador() {};
 
     // Constructor de  boxeador
-    public Boxeador(String nombre, int edad, String deporte, float altura, float peso, int fuerzaGolpe, int luchasLuchadas, int luchasGanadas) {
+    public Boxeador(String nombre, int edad, Deporte deporte, float altura, float peso, int fuerzaGolpe, int luchasLuchadas, int luchasGanadas) {
         super(nombre, edad, deporte, altura, peso);
         this.fuerzaGolpe = fuerzaGolpe;
         this.luchasLuchadas = luchasLuchadas;
